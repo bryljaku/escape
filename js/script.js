@@ -12,7 +12,7 @@ let audioStarted = false;
 let currentStage = 0;
 let stagesUnlocked = [];
 
-const stagePasswords = ["", "WIŚNIA", 2025, "🍋🐔😀", 4, "ICTTN"];
+const stagePasswords = ["", "WIŚNIA", "3746", "🍋🐔😀", "4", "ICTTN"];
 
 secretTrigger.addEventListener("click", () => {
   document.getElementById("secretModal").style.display = "flex";
@@ -66,15 +66,13 @@ function updateStageDisplay() {
   textx = [
     "",
     "Coż za spostrzegawczość, znalazłeś miejsce na wpisanie hasła", // Wiśnia
-    "Znowu Ty? Daj mi spokój, ale skoro już tu jesteś, to jesteś na dobrej drodze. ", // 2025
-    "Coś mi mówi, że jesteś bystry i sprytny. Ale to dopiero początek, prawdziwa zabawa zaczyna się teraz.  🐄 🐔 😀 🔥 🍋 🍞 🥦", //🍋🐔😀
-    "Ojej, czy to możliwe, że jesteś naprawdę blisko odkrycia wszystkich tajemnic tej kolacji? Nie spoczywaj na laurach, jeszcze wiele przed tobą!",
-    "Coraz bliżej, ale czy jesteś gotowy na to, co czeka na końcu tej drogi? Odkryj ostatnią tajem.nicę, a nagroda będzie warta wysiłku!",
-    "Czy to już koniec? Odkryłeś wszystkie tajemnice tej kolacji, ale czy naprawdę poznałeś wszystkie sekrety? Czas pokaże, czy jesteś prawdziwym mistrzem tej gry!",
+    "Znowu Ty? Daj mi spokój, ale skoro już tu jesteś, to jesteś na dobrej drodze.", // 2025
+    "Coś mi mówi, że jesteś bystry i sprytny. Ale to dopiero początek, prawdziwa zabawa zaczyna się teraz.", //🍋🐔😀
+    "Ojej, czy to możliwe, że jesteś naprawdę blisko odkrycia wszystkich tajemnic tej kolacji? Nie spoczywaj na laurach, jeszcze wiele przed tobą!", // ?
+    "Coraz bliżej, ale czy jesteś gotowy na to, co czeka na końcu tej drogi? Czy jesteś w stanie wskazać przepis na IDEALNĄ KOLACJĘ?", // ICTTN
   ];
   if (currentStage >= textx.length) {
-    display.textContent =
-      "Gratulacje! Odkryłeś wszystkie tajemnice tej kolacji!";
+    display.textContent = "Gratulacje! Odkryłeś przepis na idealną kolację!";
     return;
   }
   display.textContent = `${textx[currentStage]}`;
@@ -112,9 +110,17 @@ function playStageAudio(stage) {
     }
   }
 }
+document.querySelectorAll(".emoji-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    passwordInput.value += btn.textContent;
+  });
+});
+clearPassword.addEventListener("click", () => {
+  passwordInput.value = "";
+});
 
 // Handle password submission
-document.getElementById("submitPassword").addEventListener("click", () => {
+document.getElementById("submitPassword").addEventListener("click", (e) => {
   const passwordInput = document.getElementById("passwordInput");
   const password = passwordInput.value.trim().toUpperCase();
   const nextStage = currentStage + 1;
@@ -127,31 +133,22 @@ document.getElementById("submitPassword").addEventListener("click", () => {
 
     // Show content for all unlocked stages
     showUnlockedStages();
+    e.preventDefault();
 
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
-
+    // document.querySelector("main").scrollTo({
+    //   top: 0,
+    //   behavior: "smooth",
+    // });
     // Play stage audio
-    playStageAudio(currentStage);
 
     // Update stage display
     updateStageDisplay();
 
-    // Scroll to revealed content
-    const revealedContent = document.querySelector(
-      `.hidden-content[data-stage="${currentStage}"]`,
-    );
-    if (revealedContent) {
-      revealedContent.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-
     // Close modal after successful unlock
     secretModal.style.display = "none";
 
-    // Hide secret trigger after first unlock
-    // secretTrigger.style.display = "none";
+    playStageAudio(currentStage);
   } else {
     passwordInput.value = "";
   }

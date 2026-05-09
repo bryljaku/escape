@@ -295,3 +295,14 @@ section {
   color: #f4d6a2;
   margin-bottom: 10px;
 }
+.emoji-panel {
+}
+
+.emoji-btn {
+  background: none;
+  transition: 0.2s ease;
+}
+
+.emoji-btn:hover {
+  transform: scale(1.2);
+}
