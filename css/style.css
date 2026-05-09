@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f0c0c;
+  color: #f4eee3;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.01),
+    rgba(255, 255, 255, 0.01) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url("../assets/images/hero-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+h1 {
+  font-size: 6rem;
+  font-family: "Cormorant Garamond", serif;
+  color: #f7d9a5;
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  color: #d5c0a0;
+  font-style: italic;
+}
+
+.intro {
+  margin-top: 30px;
+  line-height: 1.9;
+  color: #ddd;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 15px 35px;
+  border: 1px solid #d4b483;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #d4b483;
+  color: #111;
+}
+
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 100px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3.5rem;
+  margin-bottom: 60px;
+  color: #f4d6a2;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.menu-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 50px;
+  border-radius: 20px;
+}
+
+.menu-item {
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 20px;
+}
+
+.menu-item:last-child {
+  border: none;
+}
+
+.menu-item span {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: #c89b61;
+}
+
+.menu-item h3 {
+  margin-top: 10px;
+  font-size: 2rem;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.rules {
+  display: grid;
+  gap: 20px;
+}
+
+.rule {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 25px;
+  border-left: 3px solid #d4b483;
+}
+
+.secret-trigger {
+  margin-top: 60px;
+  text-align: center;
+  opacity: 0.2;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.secret-trigger:hover {
+  opacity: 0.8;
+}
+
+.hidden-message {
+  display: none;
+  margin-top: 40px;
+  background: #1b1414;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.hidden-message h3 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-family: "Cormorant Garamond", serif;
+  color: #f4d6a2;
+}
+
+.hidden-message button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  background: none;
+  border: 1px solid #d4b483;
+  color: #fff;
+  cursor: pointer;
+}
+
+.candle {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.modal-box {
+  max-width: 700px;
+  background: #181212;
+  padding: 60px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.modal-box h2 {
+  font-size: 4rem;
+  color: #f4d6a2;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.modal-box p {
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+.modal-box button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  border: 1px solid #d4b483;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .menu-item h3 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>La Notte Segreta</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="overlay"></div>
+
+    <header class="hero">
+      <div class="hero-content">
+        <h1>La Notte Segreta</h1>
+
+        <p class="subtitle">Wieczór pełen włoskich smaków i sekretów</p>
+
+        <p class="intro">
+          W starej restauracji odnaleziono wiadomość po dawnym właścicielu.
+          Podczas tej kolacji nic nie jest przypadkowe. Każdy detal może być
+          wskazówką.
+        </p>
+
+        <a href="#menu" class="button"> Rozpocznij wieczór </a>
+      </div>
+    </header>
+
+    <section id="menu">
+      <h2 class="section-title">Menu della Sera</h2>
+
+      <div class="menu-card">
+        <div class="menu-item">
+          <span>Przystawka</span>
+          <h3>Insalata di pesche, burrata e speck</h3>
+        </div>
+
+        <div class="menu-item">
+          <span>Zupa</span>
+          <h3>Crema di asparagi</h3>
+        </div>
+
+        <div class="menu-item">
+          <span>Danie główne</span>
+          <h3>Tagliatelle al limone e pollo</h3>
+        </div>
+
+        <div class="menu-item">
+          <span>Deser</span>
+          <h3>Tiramisù alle fragole</h3>
+        </div>
+
+        <div class="menu-item">
+          <span>Lemoniada</span>
+          <h3>Nuvola di ciliegie e limone</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="rules-section">
+      <h2 class="section-title">Zasady Wieczoru</h2>
+
+      <div class="rules">
+        <div class="rule">Każdy szczegół może być wskazówką.</div>
+
+        <div class="rule">Nie ufaj pierwszemu wrażeniu.</div>
+
+        <div class="rule">Szukaj symboli światła.</div>
+
+        <div class="rule">Sekret restauracji ukryto głębiej niż myślisz.</div>
+      </div>
+
+      <div class="secret-trigger" id="secretTrigger">
+        La chiave è dove nessuno guarda.
+      </div>
+
+      <div class="hidden-message" id="hiddenMessage">
+        <h3>Odkryto ukrytą wiadomość</h3>
+
+        <p>„Piwnica skrywa więcej niż wino.”</p>
+
+        <p>Hasło: <strong>OMBRA</strong></p>
+
+        <button id="goSecret">Otwórz sekret</button>
+      </div>
+    </section>
+
+    <div class="candle" id="candle">🕯️</div>
+
+    <div class="modal" id="modal">
+      <div class="modal-box">
+        <h2>Benvenuti.</h2>
+
+        <p>
+          Jeśli to czytasz — jesteś bliżej prawdy niż pozostali.
+          <br /><br />
+          Pierwszy klucz znajduje się przy stole.
+        </p>
+
+        <button id="closeModal">Zamknij</button>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
