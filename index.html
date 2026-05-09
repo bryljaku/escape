@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <section class="rules-section hidden-content">
+    <section class="rules-section hidden-content" data-stage="1">
       <h2 class="section-title">Zasady Wieczoru</h2>
 
       <div class="rules">
@@ -82,7 +82,7 @@
         <div class="rule">Sekret restauracji ukryto głębiej niż myślisz.</div>
       </div>
 
-      <div class="hidden-message" id="hiddenMessage">
+      <div class="hidden-message" id="hiddenMessage" data-stage="1">
         <h3>Odkryto ukrytą wiadomość</h3>
 
         <p>„Piwnica skrywa więcej niż wino.”</p>
@@ -91,7 +91,24 @@
 
         <button id="goSecret">Otwórz sekret</button>
       </div>
+
+      <div id="stage2Content" class="hidden-content" data-stage="2">
+        <h3>Poziom 2: Głębsze Sekrety</h3>
+        <p>
+          Odkryłeś więcej. Restauracja ma wiele warstw ukrytych tajemnic. Szukaj
+          dalej...
+        </p>
+      </div>
+
+      <div id="stage3Content" class="hidden-content" data-stage="3">
+        <h3>Poziom 3: Prawda Ujawniona</h3>
+        <p>
+          Jesteś blisko rozwiązania. Ostatni klucz czeka na Ciebie w
+          najciemniejszym rogu...
+        </p>
+      </div>
     </section>
+
     <div class="secret-trigger" id="secretTrigger">
       La chiave è dove nessuno guarda.
     </div>
@@ -116,13 +133,13 @@
         <h2>Hasło</h2>
 
         <p>Wpisz hasło, aby dostać się do sekretów.</p>
+        <p
+          id="stageDisplay"
+          style="font-size: 0.9rem; color: #c89b61; margin-top: 10px"
+        ></p>
 
         <form id="passwordForm">
-          <input
-            type="password"
-            id="passwordInput"
-            placeholder="Hasło..."
-          />
+          <input type="password" id="passwordInput" placeholder="Hasło..." />
           <button type="button" id="submitPassword">Potwierdź</button>
         </form>
       </div>
@@ -131,6 +148,9 @@
     <audio id="ambientSound" src="./assets/audio/ambient.mp3" loop></audio>
     <audio id="glassSound" src="./assets/audio/glass.wav"></audio>
     <audio id="whisperSound" src="./assets/audio/whisper.mp3"></audio>
+    <audio id="stageAudio1" src="./assets/audio/stage1.mp3"></audio>
+    <audio id="stageAudio2" src="./assets/audio/stage2.mp3"></audio>
+    <audio id="stageAudio3" src="./assets/audio/stage3.mp3"></audio>
 
     <script src="./js/script.js"></script>
   </body>
