@@ -24,17 +24,37 @@
       <div class="hero-content">
         <h1>La Notte Segreta</h1>
 
-        <p class="subtitle hidden-content" data-stage="1">
+        <p class="subtitle hidden-content">
           Wieczór pełen włoskich smaków i sekretów
         </p>
 
-        <p class="intro hidden-content" data-stage="1">
+        <p class="intro hidden-content" data-stage="1" data-hide-from="2">
           W starej restauracji odnaleziono wiadomość po dawnym właścicielu.
           Podczas tej kolacji nic nie jest przypadkowe. Każdy detal może być
-          wskazówką.
+          wskazówką. Kolacja rozpoczęła się od lemoniady, która była słodka i
+          chmurkowa. Spróbuj jej i zwróć uwagę na smak... Czy czujesz coś więcej
+          niż tylko cytrynę?
         </p>
 
-        <a href="#menu" class="button"> Rozpocznij wieczór </a>
+        <p class="intro hidden-content" data-stage="2" data-hide-from="3">
+          Gratulacje, odkryłeś, że lemoniada jest pyszna. Ale to dopiero
+          początek. Szukaj dalej, bo restauracja skrywa więcej tajemnic niż
+          myślisz. Następnym daniem jest przystawka. Zwróć uwagę na to w czym
+          jest podana. Może to być klucz do odkrycia kolejnej wskazówki.
+        </p>
+        <!-- tutaj zdobywają kod spod misek -->
+        <div>
+          <a href="#menu" class="button" data-hide-from="1">
+            Rozpocznij wieczór
+          </a>
+        </div>
+        <!-- tutaj ogarniają że muszą tego samego kodu użyć ponownie do otwarcia kłódki -->
+        <!-- hasłem będzie emoji w odpowiedniej kolejności -->
+        <div>
+          <a href="#menu" class="button hidden-content" data-stage="1">
+            Kontynuuuj wieczór
+          </a>
+        </div>
       </div>
     </header>
 
@@ -44,75 +64,66 @@
       <div class="menu-card">
         <div class="menu-item">
           <span>Przystawka</span>
-          <h3>Insalata di pesche, burrata e speck</h3>
+          <h3 class="hidden-content" data-stage="2">
+            Insalata di pesche, burrata e speck
+          </h3>
         </div>
 
         <div class="menu-item">
-          <span>Zupa</span>
-          <h3>Crema di asparagi</h3>
+          <span>Pierwsze danie</span>
+          <h3 class="hidden-content" data-stage="3">Crema di asparagi</h3>
         </div>
 
         <div class="menu-item">
           <span>Danie główne</span>
-          <h3>Tagliatelle al limone e pollo</h3>
+          <h3 class="hidden-content" data-stage="4">
+            Tagliatelle al limone e pollo
+          </h3>
         </div>
 
         <div class="menu-item">
           <span>Deser</span>
-          <h3>Tiramisù alle fragole</h3>
+          <h3 class="hidden-content" data-stage="5">Tiramisù alle fragole</h3>
         </div>
 
         <div class="menu-item">
           <span>Lemoniada</span>
-          <h3>Nuvola di ciliegie e limone</h3>
+          <h3 class="hidden-content" data-stage="1">
+            Nuvola di ciliegie e limone
+          </h3>
         </div>
       </div>
     </section>
 
-    <section class="rules-section hidden-content" data-stage="1">
+    <section class="rules-section">
       <h2 class="section-title">Zasady Wieczoru</h2>
 
       <div class="rules">
-        <div class="rule">Każdy szczegół może być wskazówką.</div>
+        <div class="rule" data-hide-from="1">Do trzech razy sztuka.</div>
 
-        <div class="rule">Nie ufaj pierwszemu wrażeniu.</div>
+        <div class="rule hidden-content" data-stage="1">
+          Delektuj się pysznym jedzeniem.
+        </div>
 
-        <div class="rule">Szukaj symboli światła.</div>
+        <div class="rule hidden-content" data-stage="1">
+          Każdy szczegół może być wskazówką, ale bez przesady. Nie szukaj na
+          siłę, pozwól, by tajemnice same się ujawniły.
+        </div>
 
-        <div class="rule">Sekret restauracji ukryto głębiej niż myślisz.</div>
-      </div>
-
-      <div class="hidden-message" id="hiddenMessage" data-stage="1">
-        <h3>Odkryto ukrytą wiadomość</h3>
-
-        <p>„Piwnica skrywa więcej niż wino.”</p>
-
-        <p>Hasło: <strong>OMBRA</strong></p>
-
-        <button id="goSecret">Otwórz sekret</button>
-      </div>
-
-      <div id="stage2Content" class="hidden-content" data-stage="2">
-        <h3>Poziom 2: Głębsze Sekrety</h3>
-        <p>
-          Odkryłeś więcej. Restauracja ma wiele warstw ukrytych tajemnic. Szukaj
-          dalej...
-        </p>
-      </div>
-
-      <div id="stage3Content" class="hidden-content" data-stage="3">
-        <h3>Poziom 3: Prawda Ujawniona</h3>
-        <p>
-          Jesteś blisko rozwiązania. Ostatni klucz czeka na Ciebie w
-          najciemniejszym rogu...
-        </p>
+        <div class="rule hidden-content" data-stage="2">
+          Współpracuj z innymi. Razem łatwiej odkryć wszystkie sekrety.
+        </div>
+        <div class="rule hidden-content" data-stage="3" data-hide-from="4">
+          Niektórych kodów można użyć w wielu miejscach.
+        </div>
       </div>
     </section>
 
-    <div class="secret-trigger" id="secretTrigger">
+    <div class="secret-trigger" id="secretTrigger" style="display: none">
       La chiave è dove nessuno guarda.
     </div>
-    <div class="candle" id="candle">🕯️</div>
+
+    <div class="candle" id="candle" data-hide-from="1">🕯️</div>
 
     <div class="modal" id="modal">
       <div class="modal-box">
@@ -132,14 +143,14 @@
       <div class="modal-box">
         <h2>Hasło</h2>
 
-        <p>Wpisz hasło, aby dostać się do sekretów.</p>
+        <!-- <p>Wpisz hasło, aby przejść dalej.</p> -->
         <p
           id="stageDisplay"
           style="font-size: 0.9rem; color: #c89b61; margin-top: 10px"
         ></p>
 
         <form id="passwordForm">
-          <input type="password" id="passwordInput" placeholder="Hasło..." />
+          <input id="passwordInput" placeholder="Hasło..." />
           <button type="button" id="submitPassword">Potwierdź</button>
         </form>
       </div>

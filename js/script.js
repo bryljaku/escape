@@ -10,14 +10,15 @@ const hidden = document.getElementById("hiddenContent");
 
 let audioStarted = false;
 let currentStage = 0;
+let stagesUnlocked = [];
+
+const stagePasswords = ["", "WIŚNIA", 2025, "🍋🐔😀", 4, "ICTTN"];
 
 secretTrigger.addEventListener("click", () => {
   document.getElementById("secretModal").style.display = "flex";
   updateStageDisplay();
-});
-
-document.getElementById("goSecret").addEventListener("click", () => {
-  window.location.href = "pages/secret.html";
+  // Remove active state when clicked
+  secretTrigger.classList.remove("active");
 });
 
 let clicks = 0;
@@ -30,8 +31,22 @@ candle.addEventListener("click", () => {
   clicks++;
 
   if (clicks === 3) {
-    modal.style.display = "flex";
+    // Show secret trigger with active state
+    secretTrigger.style.display = "block";
+    secretTrigger.classList.add("active");
     clicks = 0;
+    currentStage = Math.max(1, currentStage);
+    if (!stagesUnlocked.includes(currentStage)) {
+      stagesUnlocked.push(currentStage);
+    }
+
+    // Show content for all unlocked stages
+    showUnlockedStages();
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    updateStageDisplay();
   }
 });
 
@@ -48,13 +63,44 @@ secretModal.addEventListener("click", (e) => {
 
 function updateStageDisplay() {
   const display = document.getElementById("stageDisplay");
-  if (currentStage === 0) {
-    display.textContent = "Odkryj sekret (1/3)";
-  } else if (currentStage === 1) {
-    display.textContent = "Dodatne warstwy czekają (2/3)";
-  } else if (currentStage === 2) {
-    display.textContent = "Jesteś blisko końca (3/3)";
+  textx = [
+    "",
+    "Coż za spostrzegawczość, znalazłeś miejsce na wpisanie hasła", // Wiśnia
+    "Znowu Ty? Daj mi spokój, ale skoro już tu jesteś, to jesteś na dobrej drodze. ", // 2025
+    "Coś mi mówi, że jesteś bystry i sprytny. Ale to dopiero początek, prawdziwa zabawa zaczyna się teraz.  🐄 🐔 😀 🔥 🍋 🍞 🥦", //🍋🐔😀
+    "Ojej, czy to możliwe, że jesteś naprawdę blisko odkrycia wszystkich tajemnic tej kolacji? Nie spoczywaj na laurach, jeszcze wiele przed tobą!",
+    "Coraz bliżej, ale czy jesteś gotowy na to, co czeka na końcu tej drogi? Odkryj ostatnią tajem.nicę, a nagroda będzie warta wysiłku!",
+    "Czy to już koniec? Odkryłeś wszystkie tajemnice tej kolacji, ale czy naprawdę poznałeś wszystkie sekrety? Czas pokaże, czy jesteś prawdziwym mistrzem tej gry!",
+  ];
+  if (currentStage >= textx.length) {
+    display.textContent =
+      "Gratulacje! Odkryłeś wszystkie tajemnice tej kolacji!";
+    return;
   }
+  display.textContent = `${textx[currentStage]}`;
+}
+
+function showUnlockedStages() {
+  document.querySelectorAll(".rule, .hidden-content").forEach((el) => {
+    el.classList.remove("show");
+    el.classList.remove("hide");
+  });
+
+  stagesUnlocked.forEach((stage) => {
+    document
+      .querySelectorAll(`.hidden-content[data-stage="${stage}"]`)
+      .forEach((el) => {
+        el.classList.add("show");
+      });
+  });
+
+  document.querySelectorAll("[data-hide-from]").forEach((el) => {
+    const hideFrom = parseInt(el.dataset.hideFrom);
+
+    if (Math.max(...stagesUnlocked) >= hideFrom) {
+      el.classList.add("hide");
+    }
+  });
 }
 
 function playStageAudio(stage) {
@@ -71,20 +117,19 @@ function playStageAudio(stage) {
 document.getElementById("submitPassword").addEventListener("click", () => {
   const passwordInput = document.getElementById("passwordInput");
   const password = passwordInput.value.trim().toUpperCase();
+  const nextStage = currentStage + 1;
+  const requiredPassword = stagePasswords[currentStage];
 
-  if (password === "ICTTN") {
-    currentStage += 1;
+  if (password === requiredPassword) {
+    currentStage = nextStage;
+    stagesUnlocked.push(currentStage);
     passwordInput.value = "";
 
-    // Hide all hidden content first
-    document.querySelectorAll(".hidden-content[data-stage]").forEach((el) => {
-      el.classList.remove("show");
-    });
+    // Show content for all unlocked stages
+    showUnlockedStages();
 
-    // Show content for current stage
-    document.querySelectorAll(`.hidden-content[data-stage="${currentStage}"]`).forEach((el) => {
-      el.classList.add("show");
-    });
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
     // Play stage audio
     playStageAudio(currentStage);
@@ -93,7 +138,9 @@ document.getElementById("submitPassword").addEventListener("click", () => {
     updateStageDisplay();
 
     // Scroll to revealed content
-    const revealedContent = document.querySelector(`.hidden-content[data-stage="${currentStage}"]`);
+    const revealedContent = document.querySelector(
+      `.hidden-content[data-stage="${currentStage}"]`,
+    );
     if (revealedContent) {
       revealedContent.scrollIntoView({
         behavior: "smooth",
@@ -102,6 +149,9 @@ document.getElementById("submitPassword").addEventListener("click", () => {
 
     // Close modal after successful unlock
     secretModal.style.display = "none";
+
+    // Hide secret trigger after first unlock
+    // secretTrigger.style.display = "none";
   } else {
     passwordInput.value = "";
   }
@@ -118,7 +168,7 @@ document.getElementById("passwordInput").addEventListener("keypress", (e) => {
    AUDIO START (SAFE AUTOPLAY FIX)
 ========================= */
 function startAudio() {
-  if (audioStarted || !ambient) return;
+  if (audioStarted) return;
   audioStarted = true;
 
   ambient.volume = 0;

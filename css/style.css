@@ -145,6 +145,10 @@ section {
   opacity: 0.8;
 }
 
+.secret-trigger.active {
+  opacity: 0.8;
+}
+
 .hidden-message {
   display: none;
   margin-top: 40px;
@@ -173,8 +177,14 @@ section {
   position: fixed;
   right: 30px;
   bottom: 30px;
-  font-size: 2rem;
+  font-size: 3rem;
   cursor: pointer;
+  z-index: 100;
+  transition: 0.3s;
+}
+
+.candle:hover {
+  transform: scale(1.2);
 }
 
 .modal {
@@ -184,6 +194,10 @@ section {
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.9);
+}
+
+.hide {
+  display: none;
 }
 
 .modal-box {
@@ -257,6 +271,15 @@ section {
   max-height: 1000px;
   opacity: 1;
   padding: 40px 20px;
+}
+
+/* HIDDEN STATE */
+.solved-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: 1s ease;
+  padding: 0 20px;
 }
 
 /* SECRET CARDS */
