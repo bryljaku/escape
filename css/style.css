@@ -214,6 +214,22 @@ section {
   cursor: pointer;
 }
 
+.modal-box input {
+  margin-top: 20px;
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #d4b483;
+  color: #f4eee3;
+  border-radius: 5px;
+  font-family: "Inter", sans-serif;
+}
+
+.modal-box input::placeholder {
+  color: rgba(244, 238, 227, 0.5);
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 4rem;
@@ -226,4 +242,33 @@ section {
   .menu-item h3 {
     font-size: 1.5rem;
   }
+}
+/* HIDDEN STATE */
+.hidden-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: 1s ease;
+  padding: 0 20px;
+}
+
+/* UNLOCKED STATE */
+.hidden-content.show {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 40px 20px;
+}
+
+/* SECRET CARDS */
+.secret-card {
+  margin-top: 20px;
+  padding: 20px;
+  border-left: 2px solid #c89b61;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.secret-card h2 {
+  font-family: "Cormorant Garamond", serif;
+  color: #f4d6a2;
+  margin-bottom: 10px;
 }

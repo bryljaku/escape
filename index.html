@@ -24,9 +24,11 @@
       <div class="hero-content">
         <h1>La Notte Segreta</h1>
 
-        <p class="subtitle">Wieczór pełen włoskich smaków i sekretów</p>
+        <p class="subtitle hidden-content" data-stage="1">
+          Wieczór pełen włoskich smaków i sekretów
+        </p>
 
-        <p class="intro">
+        <p class="intro hidden-content" data-stage="1">
           W starej restauracji odnaleziono wiadomość po dawnym właścicielu.
           Podczas tej kolacji nic nie jest przypadkowe. Każdy detal może być
           wskazówką.
@@ -67,7 +69,7 @@
       </div>
     </section>
 
-    <section class="rules-section">
+    <section class="rules-section hidden-content">
       <h2 class="section-title">Zasady Wieczoru</h2>
 
       <div class="rules">
@@ -80,10 +82,6 @@
         <div class="rule">Sekret restauracji ukryto głębiej niż myślisz.</div>
       </div>
 
-      <div class="secret-trigger" id="secretTrigger">
-        La chiave è dove nessuno guarda.
-      </div>
-
       <div class="hidden-message" id="hiddenMessage">
         <h3>Odkryto ukrytą wiadomość</h3>
 
@@ -94,7 +92,9 @@
         <button id="goSecret">Otwórz sekret</button>
       </div>
     </section>
-
+    <div class="secret-trigger" id="secretTrigger">
+      La chiave è dove nessuno guarda.
+    </div>
     <div class="candle" id="candle">🕯️</div>
 
     <div class="modal" id="modal">
@@ -111,6 +111,27 @@
       </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <div class="modal" id="secretModal">
+      <div class="modal-box">
+        <h2>Hasło</h2>
+
+        <p>Wpisz hasło, aby dostać się do sekretów.</p>
+
+        <form id="passwordForm">
+          <input
+            type="password"
+            id="passwordInput"
+            placeholder="Hasło..."
+          />
+          <button type="button" id="submitPassword">Potwierdź</button>
+        </form>
+      </div>
+    </div>
+    <!-- AUDIO -->
+    <audio id="ambientSound" src="./assets/audio/ambient.mp3" loop></audio>
+    <audio id="glassSound" src="./assets/audio/glass.wav"></audio>
+    <audio id="whisperSound" src="./assets/audio/whisper.mp3"></audio>
+
+    <script src="./js/script.js"></script>
   </body>
 </html>
