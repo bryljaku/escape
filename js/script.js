@@ -67,8 +67,8 @@ function updateStageDisplay() {
     "",
     "Coż za spostrzegawczość, znalazłeś miejsce na wpisanie hasła", // Wiśnia
     "Znowu Ty? Daj mi spokój, ale skoro już tu jesteś, to jesteś na dobrej drodze.", // 2025
-    "Coś mi mówi, że jesteś bystry i sprytny. Ale to dopiero początek, prawdziwa zabawa zaczyna się teraz.", //🍋🐔😀
-    "Ojej, czy to możliwe, że jesteś naprawdę blisko odkrycia wszystkich tajemnic tej kolacji? Nie spoczywaj na laurach, jeszcze wiele przed tobą!", // ?
+    "Coś mi mówi, że jesteś bystry i sprytny. Prawdziwa zabawa zaczyna się teraz!", //🍋🐔😀
+    "Ojej, czy to możliwe, że jesteś naprawdę blisko odkrycia wszystkich tajemnic tej kolacji? Nie spoczywaj na laurach, jeszcze trochę przed tobą!", // ?
     "Coraz bliżej, ale czy jesteś gotowy na to, co czeka na końcu tej drogi? Czy jesteś w stanie wskazać przepis na IDEALNĄ KOLACJĘ?", // ICTTN
   ];
   if (currentStage >= textx.length) {
@@ -89,6 +89,11 @@ function showUnlockedStages() {
       .querySelectorAll(`.hidden-content[data-stage="${stage}"]`)
       .forEach((el) => {
         el.classList.add("show");
+        if (stage == currentStage) {
+          el.closest(".menu-item")?.classList.add("unlocked");
+        } else {
+          el.closest(".menu-item")?.classList.remove("unlocked");
+        }
       });
   });
 
