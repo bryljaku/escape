@@ -15,7 +15,7 @@ let stagesUnlocked = [];
 const stagePasswords = ["", "WIŚNIA", "3746", "🍋🐔😀", "4", "ICTTN"];
 
 secretTrigger.addEventListener("click", () => {
-  document.getElementById("secretModal").style.display = "flex";
+  secretModal.classList.add("active");
   updateStageDisplay();
   // Remove active state when clicked
   secretTrigger.classList.remove("active");
@@ -57,7 +57,7 @@ document.getElementById("closeModal").addEventListener("click", () => {
 // Close secret modal when clicking outside the modal-box
 secretModal.addEventListener("click", (e) => {
   if (e.target === secretModal) {
-    secretModal.style.display = "none";
+    secretModal.classList.remove("active");
   }
 });
 
@@ -146,7 +146,7 @@ document.getElementById("submitPassword").addEventListener("click", (e) => {
     updateStageDisplay();
 
     // Close modal after successful unlock
-    secretModal.style.display = "none";
+    secretModal.classList.remove("active");
 
     playStageAudio(currentStage);
   } else {
