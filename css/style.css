@@ -190,10 +190,19 @@ section {
 .modal {
   position: fixed;
   inset: 0;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+}
+
+.modal {
+  display: none;
+}
+
+.modal[style*="display: flex"] {
+  display: flex !important;
 }
 
 .hide {

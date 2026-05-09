@@ -157,6 +157,7 @@ document.getElementById("submitPassword").addEventListener("click", (e) => {
 // Handle Enter key in password input
 document.getElementById("passwordInput").addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
+    e.preventDefault();
     document.getElementById("submitPassword").click();
   }
 });
