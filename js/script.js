@@ -12,7 +12,7 @@ let audioStarted = false;
 let currentStage = 0;
 let stagesUnlocked = [];
 
-const stagePasswords = ["", "WIŚNIA", "3746", "🍋🐔🔥😀", "truskawka", "NICTT"];
+const stagePasswords = ["", "WIŚNIA", "3746", "🍋🐔🔥😀", "TRUSKAWKA", "NICTT"];
 
 secretTrigger.addEventListener("click", () => {
   secretModal.classList.add("active");

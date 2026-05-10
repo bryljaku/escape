@@ -323,3 +323,11 @@ section {
 .emoji-btn:hover {
   transform: scale(1.2);
 }
+.gold-glow {
+  color: #ffd700;
+  font-weight: bold;
+  text-shadow:
+    0 0 5px #ffd700,
+    0 0 10px #ffcc00,
+    0 0 20px #ffb700;
+}
