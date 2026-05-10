@@ -12,7 +12,7 @@ let audioStarted = false;
 let currentStage = 0;
 let stagesUnlocked = [];
 
-const stagePasswords = ["", "WIŚNIA", "3746", "🍋🐔😀", "4", "ICTTN"];
+const stagePasswords = ["", "WIŚNIA", "3746", "🍋🐔🔥😀", "truskawka", "NICTT"];
 
 secretTrigger.addEventListener("click", () => {
   secretModal.classList.add("active");
@@ -68,7 +68,7 @@ function updateStageDisplay() {
     "Coż za spostrzegawczość, znalazłeś miejsce na wpisanie hasła", // Wiśnia
     "Znowu Ty? Daj mi spokój, ale skoro już tu jesteś, to jesteś na dobrej drodze.", // 2025
     "Coś mi mówi, że jesteś bystry i sprytny. Prawdziwa zabawa zaczyna się teraz!", //🍋🐔😀
-    "Ojej, czy to możliwe, że jesteś naprawdę blisko odkrycia wszystkich tajemnic tej kolacji? Nie spoczywaj na laurach, jeszcze trochę przed tobą!", // ?
+    "Ojej, czy to możliwe, że jesteś naprawdę blisko odkrycia wszystkich tajemnic tej kolacji? Nie spoczywaj na laurach, jeszcze trochę przed tobą!", // wzgórze
     "Coraz bliżej, ale czy jesteś gotowy na to, co czeka na końcu tej drogi? Czy jesteś w stanie wskazać przepis na IDEALNĄ KOLACJĘ?", // ICTTN
   ];
   if (currentStage >= textx.length) {
